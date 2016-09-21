@@ -1,0 +1,40 @@
+--TABLE qpoints
+-- TABLE: public.qpoints
+-- DROP TABLE public.qpoints;
+CREATE TABLE public.qpoints
+(
+id serial NOT NULL,
+point_name varchar(50) NOT NULL,
+question varchar(100) NOT NULL,
+possible_answer_1 varchar (25) NOT NULL,
+possible_answer_2 varchar (25) NOT NULL,
+possible_answer_3 varchar (25) NOT NULL,
+possible_answer_4 varchar (25) NOT NULL,
+correct_answer varchar (25) NOT NULL,
+coords geometry NOT NULL);
+
+
+
+
+--TABLE qpoints
+-- TABLE: public.qpoints
+-- DROP TABLE public.qpoints;
+CREATE TABLE public.qpoints
+(
+id serial NOT NULL,
+point_name varchar(50),
+question varchar(100),
+possible_answer_1 varchar (25),
+possible_answer_2 varchar (25),
+possible_answer_3 varchar (25),
+possible_answer_4 varchar (25),
+correct_answer varchar (25),
+coords geometry);
+
+
+ALTER TABLE qpoints
+  ALTER COLUMN coords TYPE geometry(Point)
+  USING 
+    ST_FlipCoordinates(coords)::geometry(Point);
+
+
